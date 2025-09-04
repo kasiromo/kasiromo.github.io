@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More HTML</title>
+    <style>
+        header {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>Form Practice</header>
+
+    <main>
+        <form action="showme.html" method="get">
+            <p>
+                <label for="game">Gamer type:</label>
+                <select id="game" name="gamer-type">
+                    <option value="casual">Casual gamer</option>
+                    <option value="advanced">Advanced gamer</option>
+                    <option value="hardcore">Hardcore gamer</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="videoGame">Favorite Video Game:</label>
+                <input name="videoGame" id="videoGame" autocomplete="off"/>
+            </p>
+
+            <fieldset>
+                <legend>What's your preferred gaming platform?</legend>
+
+                <input type="radio" name="platform" id="pc" value="personalComputer"/>
+                <label for="pc">PC</label>
+
+                <input type="radio" name="platform" id="ps" value="playstation"/>
+                <label for="ps">PlayStation</label>
+
+                <input type="radio" name="platform" id="xb" value="xbox"/>
+                <label for="xb">Xbox</label>
+
+                <input type="radio" name="platform" id="ns" value="nintendoSwitch"/>
+                <label for="ns">Nintendo Switch</label>
+            </fieldset>
+
+            <p>
+                <label for="hours">How many hours per week do you play games?</label>
+                <input type="number" id="hours" name="hours" min="0" max="168"/>
+            </p>
+            
+            <p class="button">
+                <button type="submit">Submit Form</button>
+            </p>
+        </form>
+    </main>
+    
+</body>
+</html>
