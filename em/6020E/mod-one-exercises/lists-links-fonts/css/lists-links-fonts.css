@@ -1,1 +1,46 @@
+@font-face {
+    font-family: 'Aileron';
+    src:
+        url('fonts/Aileron-SemiBold.woff2') format('woff2'),
+        url('fonts/Aileron-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 
+body {
+    font-family: 'Aileron';
+}
+
+ul {
+    list-style-image: url("red-spider-lily.jpg")
+}
+
+ol {
+    list-style-type: upper-roman;
+}
+
+a {
+    text-decoration: none;
+    outline-color: transparent;
+    text-align: center;
+    border: 3px;
+    border-radius: 4px 6px;
+    color:aliceblue;
+}
+
+a:link,
+a:visited,
+a:focus {
+    background-color:cornflowerblue;
+    color:aliceblue; 
+}
+
+a:hover {
+    background-color:midnightblue;
+}
+
+a:active {
+    background-color:lightsalmon;
+    color:black
+}
