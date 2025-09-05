@@ -1,1 +1,13 @@
+html {
+    font-size: 10px;
+}
 
+#central {
+    width: 30rem;
+    height: 30rem;
+    background-image: radial-gradient(circle, rgb(153, 225, 153), rgb(22, 207, 232), rgb(157, 34, 210));
+}
+
+a:hover {
+    outline: 15px solid black;
+}
