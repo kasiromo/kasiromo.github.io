@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Intro</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(60deg, rgba(171, 33, 225, 0.754), rgb(14, 138, 176));
+        }
+
+        h1::before {
+            font-size: 50px;
+        }
+
+        header::first-letter {
+            font-size: 44px;
+        }
+
+        header::before {
+            color:rgb(250, 18, 18);
+        }
+
+        h2 {
+            transform: rotate(10deg);
+        }
+
+        .challenge-title {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 28px;
+            margin-top: 50px;
+        }
+
+        .box1 {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 20px;
+            margin: 30px auto;
+            width: 70%;
+            padding: 20px;
+            background-color: #f5b00f;
+            border: 10px solid rgb(88, 31, 10);
+            border-radius: 20px;
+            background-clip: padding-box;
+        }
+
+        .box2 {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 22px;
+            margin: 30px auto;
+            width: 70%;
+            padding: 20px;
+            background: linear-gradient(to right, rgb(84, 230, 71), rgb(191, 219, 90));
+            border: 10px dashed rgb(22, 69, 3);
+            border-radius: 15px;
+            color: rgb(0, 0, 0);
+            text-shadow: 
+                2px 2px 0 #000,
+                4px 4px 0 #222,
+                6px 6px 0 #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pseudo Elements</h1>
+
+    <header>It was the best of times, <br> it was the worst of times.</header>
+
+    <h2>Rotation Example</h2>
+
+    <h2 class="challenge-title">Take the Challenge!</h2>
+
+    <div class="box1">
+        Example one of border, padding, etc.
+    </div>
+
+    <div class="box2">
+        Example two of border, padding, etc.
+    </div>
+</body>
+</html>
