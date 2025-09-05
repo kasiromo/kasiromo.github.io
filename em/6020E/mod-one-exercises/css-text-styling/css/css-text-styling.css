@@ -1,1 +1,28 @@
+html {
+    font-size: 10px;
+    font-family: "Verdana", Georgia, sans-serif;
+}
 
+h1, h2, h3 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px plum;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+p {
+    font-size: 1rem; 
+    line-height: 1.5;
+    white-space: pre-line;
+}
