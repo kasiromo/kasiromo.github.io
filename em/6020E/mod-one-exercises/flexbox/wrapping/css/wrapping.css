@@ -1,1 +1,30 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
 
+header {
+  background: purple;
+  height: 100px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  line-height: 100px;
+  margin: 0;
+}
+
+article {
+  min-width: 400px;
+  padding: 10px;
+  margin: 10px;
+  background: aqua;
+}
+
+section {
+  display: flex;
+  flex-direction: row-reverse;
+  zoom: 0.8;
+  flex-wrap: wrap;
+}
