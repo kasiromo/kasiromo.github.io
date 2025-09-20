@@ -4,7 +4,7 @@ body {
     background: #eeeae2;
     border-style: none;  
     border: hidden;
-    font-family: 'Segoe UI', sans-serif; 
+    font-family: 'Alata', sans-serif; 
     color: #4d4c4b; 
 }
 
@@ -19,7 +19,19 @@ body {
     margin-top: 2%; 
 }
 
-.text-formatting {
+.h-center {
+    text-align: center; 
+    margin-top: 50px; 
+}
+
+.text-formatting-h {
+    margin-top: 70px;
+    margin-left: 50px; 
+    margin-right: 50px; 
+    margin-bottom: 20px; 
+}
+
+.text-formatting-p {
     margin-top: 20px;
     margin-left: 50px; 
     margin-right: 50px; 
@@ -41,16 +53,16 @@ li {
 
 a:link {
     color: #4d4c4b; 
-    text-decoration: underline;  
+    text-decoration: none;  
     font-size: 20px; 
-    font-style: italic; 
+    font-style: normal;  
 }
 
 a:visited {
     color: #3e5974; 
-    text-decoration: underline; 
+    text-decoration: none; 
     font-size: 20px; 
-    font-style: italic;
+    font-style: normal;
 }
 
 img {
@@ -64,5 +76,11 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto; 
-    width: 75%; 
+    width: 80%; 
+}
+
+#fig-caption {
+    text-align: center; 
+    font-size: 15px;  
+    font-style: italic;
 }
