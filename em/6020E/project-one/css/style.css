@@ -24,8 +24,15 @@ body {
     margin-top: 50px; 
 }
 
-.text-formatting-h {
+.text-formatting-h2 {
     margin-top: 70px;
+    margin-left: 50px; 
+    margin-right: 50px; 
+    margin-bottom: 20px; 
+}
+
+.text-formatting-h3 {
+    margin-top: 50px;
     margin-left: 50px; 
     margin-right: 50px; 
     margin-bottom: 20px; 
@@ -83,4 +90,11 @@ img {
     text-align: center; 
     font-size: 15px;  
     font-style: italic;
+}
+
+#img-formatting {
+    width: 40%;
+    height: 40%; 
+    margin-top: 25px;
+    margin-bottom: 25px; 
 }
