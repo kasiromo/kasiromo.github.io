@@ -24,6 +24,13 @@ body {
     margin-top: 50px; 
 }
 
+.text-formatting-h1 {
+    margin-top: 80px;
+    margin-left: 50px; 
+    margin-right: 50px; 
+    margin-bottom: 20px;
+}
+
 .text-formatting-h2 {
     margin-top: 70px;
     margin-left: 50px; 
