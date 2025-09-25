@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fortune Teller</title>
 
+  <style>
+  body {
+    background: radial-gradient(circle at center, #1a0033, #000); 
+    color: #f2e9ff;
+    font-family: "Papyrus", "Cursive", fantasy; 
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 15px #c77dff, 0 0 30px #9d4edd;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    border: 2px solid #9d4edd;
+    border-radius: 8px;
+    background: #2d033b;
+    color: #f2e9ff;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #9d4edd, #c77dff);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #9d4edd;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button:hover {
+    background: linear-gradient(45deg, #c77dff, #9d4edd);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #c77dff, 0 0 40px #9d4edd;
+  }
+
+  #result {
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #3c096c, #10002b);
+    box-shadow: 0 0 25px #9d4edd, inset 0 0 15px #c77dff;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    line-height: 260px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Fortune Teller</h1>
+
+  <input type="text" id="namehere" placeholder="Enter your name">
+  <button onclick="fortune()">Reveal My Fortune</button>
+
+  <div id="result">Your fortune will appear here...</div>
+
+  <script>
+    let outcomes = [
+        "Today will be an amazing day.", 
+        "There's a surprise waiting for you just around the corner.",
+        "Change does not always have to be negative; embrace the change coming your way.",
+        "This week will be full of adventure.",
+        "Someone special has you on their mind today."
+    ];
+
+    function fortune() {
+        let name = document.querySelector('#namehere').value;
+        let randomIndex = Math.floor(Math.random() * outcomes.length);
+        let selectedFortune = outcomes[randomIndex];
+        let result = document.querySelector('#result');
+        result.innerHTML = name + ", your fortune is: " + selectedFortune;
+    }
+  </script>
+
+</body>
+</html>
