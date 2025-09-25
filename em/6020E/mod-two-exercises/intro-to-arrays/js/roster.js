@@ -6,3 +6,5 @@ let output = document.querySelector('#goDawgs')
 output.innerHTML += rosterNames[i] + "<img src=roster/" + rosterPix[i] + ">" // Loads candidate names & images
 
 for (var i=0; i<rosterNames.length; i++) {}
+
+output.innerHTML += "<li>" + rosterNames[i] + "<img src=roster/" + rosterPix[i] + "></li>";
