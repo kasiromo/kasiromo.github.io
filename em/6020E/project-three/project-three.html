@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>P3: Make an Object</title>
+</head>
+<body>
+    <h1>Select a D&D Die</h1>
 
+    <div id="buttons">
+        <button onclick="showDice('d4')">d4</button>
+        <button onclick="showDice('d6')">d6</button>
+        <button onclick="showDice('d8')">d8</button>
+        <button onclick="showDice('d10')">d10</button>
+        <button onclick="showDice('d12')">d12</button>
+        <button onclick="showDice('d20')">d20</button>
+    </div>
+
+    <h2 id="description">Click a die to learn more.</h2>
+    <div id="diceImage"></div>
+</body>
+</html>
+
+<script src="dice.js"></script>
