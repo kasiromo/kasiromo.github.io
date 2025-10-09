@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Play Cards</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
 
+<body>
+  <button onclick="shuffle()">Shuffle & Deal</button>
+  <button id="addCard" onclick="addCard()">Add Card</button>
+  <button onclick="reset()">Reset</button>
+  <button onclick="dealHands()">Deal Two Hands</button>
+
+  <div id="deck"></div>
+  <div id="deck2"></div>
+</body>
+</html>
+<script src="js/cards.js"></script>
