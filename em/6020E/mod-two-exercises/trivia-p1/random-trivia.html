@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia: P1</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/random-trivia.js" defer></script>
+    <link href="css/random-trivia.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Random Trivia Generator</h1>
+
+    <button onclick="qa()">New Question</button>
+    <div id="category"></div>
+    <div id="question"></div>
+    <button onclick="showAnswer()">Show Answer</button>
+    <div id="answer"></div>
+</body>
+</html>
