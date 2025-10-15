@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroids</title>
+    <style>
+        .asteroid {
+            display: inline-block;
+            margin: 10px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .inner {
+            background-color: gray;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="count"></div>
+    <div id="showData"></div>
 
+    <script>
+    let asteroidDisplay = document.body;
+
+    $( document ).ready(function() {
+        $.getJSON('', function(data) { });
+        $.getJSON('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=ldJfciqxw8DP9diORwj3iZZ8GhesvpZXPN4QCyh4', function(data) {
+            let asteroidCount = data.near_earth_objects.length;
+            $('#count').text("Number of asteroids: " + asteroidCount);
+
+            let dataSource = data.near_earth_objects;
+
+            for (let i = 0; i < dataSource.length; i++) {
+                let maxWidth = dataSource[i].estimated_diameter.kilometers.estimated_diameter_max * 10;
+                let minWidth = dataSource[i].estimated_diameter.kilometers.estimated_diameter_min * 10;
+                let isDangerous = dataSource[i].is_potentially_hazardous_asteroid;
+                let outerColor = isDangerous ? 'red' : 'black';
+
+                let outerDiv = document.createElement("div");
+                outerDiv.className = "asteroid";
+                outerDiv.style.width = maxWidth + "px";
+                outerDiv.style.height = maxWidth + "px";
+                outerDiv.style.backgroundColor = outerColor;
+
+                let innerDiv = document.createElement("div");
+                innerDiv.className = "inner";
+                innerDiv.style.width = minWidth + "px";
+                innerDiv.style.height = minWidth + "px";
+
+                outerDiv.appendChild(innerDiv);
+                asteroidDisplay.appendChild(outerDiv);
+            }
+        });    
+    })
+</script>
+
+</body>
+</html>
