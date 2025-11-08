@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Vue & Axios from CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="catshow.css" rel="stylesheet">
+
+  <title>P6: Cat Slideshow</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Cat Breed Showcase</h1>
+
+    <!-- Buttons for switching between the different cat breeds -->
+    <div class="button-group">
+      <button v-for="(breed, index) in breeds" :key="index" :class="{ active: currentBreed === breed.id }" @click="currentBreed = breed.id">
+        {{ breed.name }}
+      </button>
+    </div>
+
+    <!-- Slideshow component -->
+    <cat-slideshow :whichcat="currentBreed"></cat-slideshow>
+  </div>
+  <br>
+  <a href="explanation.html" class="back-link">View Project Explanation →</a>
+
+  <script src="catshow.js"></script>
+</body>
+</html>

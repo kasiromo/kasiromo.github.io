@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="catshow.css">
+  <title>P6 Explanation</title>
+</head>
+<body>
+  <div class="explanation-container">
+    <h1>P6: Cat Breed Showcase — Project Explanation</h1>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        My Cat Breed Showcase project uses <strong>Vue.js</strong> and <strong>Axios</strong> to pull
+        real information and images from <a href="https://thecatapi.com" target="_blank">TheCatAPI</a>.
+        The site lets users explore different cat breeds through mini slideshows, showing pictures,
+        breed descriptions, where each breed comes from, and how friendly they are with children and dogs.
+      </p>
+    </section>
+
+    <section>
+      <h2>How It Works</h2>
+      <p>
+        The main Vue app holds a list of five cat breeds and keeps track of which one is currently
+        being shown. Each breed button connects to that list. When someone clicks on a breed button,
+        Vue updates the page automatically by changing which breed ID gets passed into the
+        <code>&lt;cat-slideshow&gt;</code> component.
+      </p>
+      <p>
+        Inside the component, <strong>Axios</strong> is used to request data from TheCatAPI. It first
+        grabs several pictures of the chosen breed and then makes a second request to get more
+        detailed info like temperament, origin, and friendliness ratings. The site shows one image at
+        a time and uses a “Next Image” button to move through the set of images for the specified breed.
+      </p>
+    </section>
+
+    <section>
+      <h2>Dynamic Updates</h2>
+      <p>
+        One of the coolest parts of Vue is how it automatically updates what you see on the screen.
+        Every time new data is loaded, the text and images on the page change right away without any
+        page refresh. The site uses <code>{{ }}</code> to show things like the breed name or
+        description directly in the HTML.
+      </p>
+      <p>
+        The project also includes small progress bars that show how dog-friendly and
+        child-friendly each breed is. These bars are based on numbers from the API that range from 1
+        to 5. I multiplied those values by 20 to turn them into percentages so they could fill the
+        bars properly.
+      </p>
+    </section>
+
+    <section>
+      <h2>Component Setup</h2>
+      <p>
+        The <code>cat-slideshow</code> part of the project is a reusable Vue component that changes
+        depending on which breed is selected. It uses a <strong>watch</strong> feature to notice when
+        a new breed button is clicked. When that happens, it automatically runs the same API
+        requests again but for the new breed.
+      </p>
+      <p>
+        The <strong>slideshow()</strong> function loops through the list of image URLs from the API.
+        Each time the “Next Image” button is pressed, it shows the next image and goes back to
+        the first one once it reaches the end.
+      </p>
+    </section>
+
+    <section>
+      <h2>Project Flow</h2>
+      <ol>
+        <li>The page loads with the default breed (American Bobtail).</li>
+        <li>Axios gets that breed’s data and a batch of images.</li>
+        <li>The breed name, description, and ratings appear below the image.</li>
+        <li>Users can click “Next Image” to scroll through the photos.</li>
+        <li>Clicking another breed button loads that new breed’s data instantly.</li>
+      </ol>
+    </section>
+
+    <footer>
+        <p><a href="catshow.html" class="back-link">← Back to Cat Showcase</a></p>
+    </footer>
+  </div>
+</body>
+</html>

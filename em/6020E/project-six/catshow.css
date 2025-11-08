@@ -1,1 +1,146 @@
+/* catshow.html CSS */
 
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #fafafa;
+  text-align: center;
+  padding: 40px;
+  color: #333;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+button {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+button.active {
+  background: #2980b9;
+}
+
+button:hover {
+  filter: brightness(0.9);
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.info {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.info p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.score-label {
+  width: 120px;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.score-bar {
+  flex: 1;
+  height: 10px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffcc70, #ff5e62);
+  transition: width 0.4s ease;
+}
+
+/* explanation.html CSS */
+.explanation-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.explanation-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.explanation-container section {
+  margin-bottom: 2rem;
+}
+
+.explanation-container h2 {
+  color: #b51e2e;
+  margin-bottom: 0.5rem;
+}
+
+.explanation-container p,
+.explanation-container li {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #333;
+}
+
+.explanation-container ol,
+.explanation-container ul {
+  margin-left: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #b51e2e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
