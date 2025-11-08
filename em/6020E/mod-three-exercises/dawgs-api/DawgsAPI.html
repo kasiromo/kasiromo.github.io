@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    img { width: 400px; }
+  </style>
+  <title>How Bout'Em</title>
+</head>
 
+<body>
+  <div id="app">
+    <button v-on:click="showme('cocker')">Cocker</button>
+    <button v-on:click="showme('brittany')">Brittany</button>
+    
+    <div>
+      <p>Click the above Cocker and Brittany buttons to view pictures of Cocker and Brittany pups! Click the Next button below to shuffle through breed-specific photos!</p>
+    </div>
+
+    <div v-if="moreData.length > 0">
+      <h3>{{ whichDawg.toUpperCase() }} SPANIEL</h3>
+      <a :href="moreData[selector]" target="_blank">
+        <img :src="moreData[selector]" alt="Current spaniel image">
+      </a>
+      <br>
+      <button v-on:click="slider()">Next</button>
+    </div>
+  </div>
+<script src="Dawgs.js"></script>
+</body>
+</html>
