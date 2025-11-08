@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Cat Stuff</title>
+    <link href="kitty.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="eachCat in catArray" :key="eachCat.id" class="cat-card">
+            <div class="card-top">
+                <div class="pics">
+                  <a v-if="imageUrl(eachCat)" :href="imageUrl(eachCat)" target="_blank" rel="noopener">
+                    <img :src="imageUrl(eachCat)" :alt="eachCat.name">
+                </a>
+                <div v-else class="placeholder">No image</div>
+            </div>
+
+        <div class="info">
+          <h2>{{ eachCat.name }}</h2>
+          <p class="muted">Origin: {{ eachCat.origin }}</p>
+          <p><strong>Temperament:</strong> {{ eachCat.temperament }}</p>
+          <p><strong>Description:</strong> {{ eachCat.description }}</p>
+
+          <p v-if="eachCat.indoor == 1"><strong>Environment:</strong> Indoor cat</p>
+          <p v-else><strong>Environment:</strong> Can live outdoors</p>
+
+          <div class="score-row">
+            <div class="score-label">Child Friendly:</div>
+            <div style="flex:1">
+              <div class="score-bar" :title="'Child friendly: ' + eachCat.child_friendly + ' / 5'">
+                <div class="score-fill" :style="{ width: (eachCat.child_friendly ? (eachCat.child_friendly / 5 * 100) + '%' : '0%') }"></div> <!-- I did use AI assistance to help me figure out the correct code to develop in order to make the "Child Friendly" meter/bar function. -->
+              </div>
+            </div>
+            <div class="muted" style="min-width:36px; text-align:right;">{{ eachCat.child_friendly || 'N/A' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="kitty.js"></script>
