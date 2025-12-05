@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellenwood Animal Hospital - Final Project</title>
+    <link href="css/final-project.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+    <div id="app" class="site-root">
+        <header class="site-header">
+            <div class="brand">
+                <img src="img/EAH_PrimaryLogo.png" alt="Ellenwood logo" class="logo">
+                <div>
+                    <h1>Ellenwood Animal Hospital</h1>
+                    <p class="tagline">Compassionate care for your pets — right in Ellenwood, GA.</p>
+                 </div>
+            </div>
 
+            <nav class="main-nav">
+                <a href="#home" @click.prevent="scrollTo('home')">Home</a>
+                 <a href="#practice" @click.prevent="scrollTo('practice')">Our Practice</a>
+                <a href="#services" @click.prevent="scrollTo('services')">Services</a>
+                <a href="#newclients" @click.prevent="scrollTo('newclients')">New Clients</a>
+                <a href="#resources" @click.prevent="scrollTo('resources')">Resources</a>
+                <a href="#contact" @click.prevent="scrollTo('contact')">Contact</a>
+                <a href="reflection.html" class="nav-reflection">Reflection</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- HOME Section -->
+            <section id="home" class="panel home-panel">
+                <div class="home-intro">
+                    <h2>Welcome to Ellenwood Animal Hospital</h2>
+                    <p>{{ clinic.intro }}</p>
+                    <div class="quick-cta">
+                        <button @click="showBooking = true">Request Appointment</button>
+                        <button @click="scrollTo('contact')">Call Us: {{ clinic.phone }}</button>
+                    </div>
+                </div>
+                <div class="home-about">
+                    <h3>Our mission</h3>
+                    <p style="margin-bottom: 20px;">{{ clinic.mission }}</p>
+
+                     <h3>Overview of services</h3>
+                    <ul class="service-list" style="margin-bottom: 20px;">
+                        <li v-for="s in services" :key="s.id" style="margin-left: 40px;">{{ s.name }}: <small>{{ s.short }}</small></li>
+                    </ul>
+                    <address class="clinic-contact">
+                        <strong>Address:</strong> {{ clinic.address }}<br>
+                        <strong>Hours:</strong> {{ clinic.hours }}
+                    </address>
+                </div>
+            </section>
+
+            <!-- OUR PRACTICE Section -->
+            <section id="practice" class="panel practice-panel">
+                <h2>Our Practice</h2>
+                <p>{{ clinic.history }}</p>
+
+                <div class="team-grid" style="margin-bottom: 50px;">
+                    <article class="team-card" v-for="member in team" :key="member.id">
+                        <img :src="member.photo" :alt="member.name" class="team-photo">
+                        <h4>{{ member.name }}</h4>
+                        <p class="role">{{ member.role }}</p>
+                        <p class="bio">{{ member.bio }}</p>
+                    </article>
+                </div>
+
+                <div class="testimonials">
+                    <h3>Client Testimonials</h3>
+                    <div v-if="testimonials.length">
+                        <blockquote v-for="t in testimonials" :key="t.id" class="testimonial">
+                            <p>"{{ t.quote }}"</p>
+                            <footer>- {{ t.author }}, <small>{{ t.source }}</small></footer>
+                        </blockquote>
+                    </div>
+                    <div v-else>
+                        <p>No testimonials available yet.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES Section -->
+            <section id="services" class="panel services-panel">
+                <h2>Services</h2>
+                <p>Below are the main services we provide. For more details or pricing, call or request an appointment.</p>
+
+                <div class="services-grid">
+                    <article class="service-card" v-for="s in services" :key="s.id">
+                        <h4>{{ s.name }}</h4>
+                        <p>{{ s.description }}</p>
+                        <ul class="service-features">
+                            <li v-for="(feat, idx) in s.features" :key="idx" style="margin-left: 40px;">{{ feat }}</li>
+                        </ul>
+                        <button @click="viewService(s)">Learn more</button>
+                    </article>
+                </div>
+
+                <!-- Modal for single service -->
+                <div class="modal" v-if="activeService">
+                    <div class="modal-inner">
+                        <button class="close" @click="activeService = null">✕</button>
+                        <h3>{{ activeService.name }}</h3>
+                        <p>{{ activeService.description }}</p>
+                        <ul>
+                            <li v-for="f in activeService.features" :key="f" style="margin-left: 40px;">{{ f }}</li>
+                        </ul>
+                        <p style="margin-top: 20px;"><em>Contact us for pricing and scheduling.</em></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEW CLIENTS Section -->
+            <section id="newclients" class="panel newclients-panel">
+                <h2>New Clients</h2>
+                <p v-if="clinic.newClientForms.length === 0">We currently do not require pre-visit forms. Please bring vaccination records to your first visit.</p>
+
+                <div v-else>
+                    <p>Please download and complete these before your visit:</p>
+                    <ul>
+                        <li v-for="form in clinic.newClientForms" :key="form.id" style="margin-left: 40px; margin-bottom: 20px;">
+                            <a :href="form.url" target="_blank" rel="noopener">{{ form.title }}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>Quick New-Client Intake</h3>
+                <form class="intake-form" @submit.prevent="submitIntake">
+                    <label>
+                        Owner name
+                        <input v-model="intake.ownerName" required />
+                    </label>
+
+                    <label>
+                        Pet name
+                        <input v-model="intake.petName" required />
+                    </label>
+
+                    <label>
+                        Pet type
+                        <select v-model="intake.petType">
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+
+                    <label class="form-label">
+                        Has pet vaccinations? 
+                        <input type="checkbox" v-model="intake.hasVaccinations"/>
+                    </label>
+
+                    <p class="form-feedback" v-if="intakeSubmitted">Thanks — intake submitted!</p>
+                    <button type="submit">Submit Intake</button>
+                </form>
+            </section>
+
+            <!-- RESOURCES Section -->
+            <section id="resources" class="panel resources-panel">
+                <h2>Resources</h2>
+
+                <h3>Payment & Financing</h3>
+                <p>{{ clinic.paymentInfo }}</p>
+
+                <h3>Pet Insurance</h3>
+                <p>
+                We accept pet insurance from many major carriers. Please verify coverage with your insurer. Example carriers: <span v-for="(p, idx) in clinic.insuranceCarriers" :key="p">{{ p }}<span v-if="idx < clinic.insuranceCarriers.length - 1">, </span></span>
+                </p>
+            </section>
+
+            <!-- CONTACT Section -->
+            <section id="contact" class="panel contact-panel">
+                <h2>Contact Us</h2>
+                <address style="margin-bottom: 20px;">
+                    <strong>Phone:</strong> <a :href="'tel:' + clinic.phoneEscaped">{{ clinic.phone }}</a><br>
+                    <strong>Address:</strong> {{ clinic.address }}<br>
+                    <strong>Hours:</strong> {{ clinic.hours }}
+                </address>
+
+                <h3>Send a message</h3>
+                <form class="contact-form" @submit.prevent="sendContact">
+                    <label>
+                        Your name
+                        <input v-model="contact.name" required />
+                    </label>
+                    <label>
+                        Your email
+                        <input v-model="contact.email" type="email" required />
+                    </label>
+                    <label>
+                        Reason
+                        <select v-model="contact.reason">
+                            <option>Appointment</option>
+                            <option>Prescription refill</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+                    <label>
+                        Message
+                        <textarea v-model="contact.message" required></textarea>
+                    </label>
+
+                    <p class="form-feedback" v-if="contactSent">Message sent! We'll respond soon.</p>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div>
+                &copy; {{ new Date().getFullYear() }} Ellenwood Animal Hospital — {{ clinic.address }}
+            </div>
+            <div class="small-links">
+                <a href="#privacy" @click.prevent>Privacy</a> · <a href="#terms" @click.prevent>Terms</a>
+            </div>
+        </footer>
+
+        <!-- Appointment Request Modal -->
+        <div class="modal" v-if="showBooking">
+            <div class="modal-inner">
+                <button class="close" @click="showBooking = false">✕</button>
+                <h3>Request an appointment</h3>
+                <form @submit.prevent="requestAppt">
+                    <label>
+                        Name
+                        <input v-model="appt.owner" required />
+                    </label>
+                    <label>
+                        Pet
+                        <input v-model="appt.pet" required />
+                    </label>
+                    <label>
+                        Preferred day
+                        <input v-model="appt.day" placeholder="e.g., 2025-12-12" />
+                    </label>
+                    <button type="submit">Submit request</button>
+                </form>
+                <p v-if="apptRequested" class="form-feedback">Request sent!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="js/final-project.js"></script>
